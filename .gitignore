@@ -1,0 +1,22 @@
+# Python
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+*.sqlite3
+
+# venv
+venv/
+
+# Django
+*.log
+*.pot
+*.py[cod]
+*.mo
+*.db
+media/
+staticfiles/
+
+# Docker
+*.env
+docker-compose.override.yml
