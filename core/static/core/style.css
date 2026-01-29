@@ -1,0 +1,38 @@
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.site-logo { width: 40px; height: 40px; margin-right: 10px; }
+.site-title { font-size: 24px; }
+
+.header-right { display: flex; gap: 15px; }
+
+.header-btn {
+    color: white;
+    text-decoration: none;
+    padding: 6px 12px;
+    border: 1px solid white;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.header-btn:hover {
+    background-color: white;
+    color: #333;
+}
