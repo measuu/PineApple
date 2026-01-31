@@ -1,17 +1,21 @@
-# Environment
-.env
-.env.*
+# Python
+*.pyc
+__pycache__/
 
-# Virtualenv
+# Django
+db.sqlite3
+*.log
+*.pot
+*.py[cod]
+
+# Virtual environment
 venv/
-.venv/
+.env
 
 # IDE
 .idea/
 .vscode/
 
-# Python
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
+# Docker
+*.env
+*.log
