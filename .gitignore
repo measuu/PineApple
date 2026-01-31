@@ -1,29 +1,17 @@
-# Python
-*.pyc
-__pycache__/
-*.pyo
-*.pyd
-*.sqlite3
-
-# venv
+# Environment
 .env
+.env.*
+
+# Virtualenv
 venv/
-
-# Django
-*.log
-*.pot
-*.py[cod]
-*.mo
-*.db
-media/
-staticfiles/
-
-# Docker
-*.env
-docker-compose.override.yml
+.venv/
 
 # IDE
 .idea/
+.vscode/
 
-# Docker volumes
-db_data/
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
