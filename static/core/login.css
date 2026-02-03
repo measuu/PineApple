@@ -27,7 +27,7 @@
 }
 
 .login-container button {
-    width: 50%; /* кнопка по центру */
+    width: 50%;
     padding: 12px;
     border: none;
     border-radius: 6px;
@@ -37,7 +37,7 @@
     cursor: pointer;
     transition: background 0.3s, transform 0.2s;
     display: block;
-    margin: 0 auto; /* центрируем */
+    margin: 0 auto;
 }
 
 .login-container button:hover {
