@@ -1,0 +1,13 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Catalog{% endblock %}
+
+{% block content %}
+<div class="catalog-grid">
+    {% for cat in categories %}
+        <a href="{% url 'category_products' cat.key %}" class="catalog-card">
+            <h3>{{ cat.name }}</h3>
+        </a>
+    {% endfor %}
+</div>
+{% endblock %}

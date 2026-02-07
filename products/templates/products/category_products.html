@@ -1,0 +1,15 @@
+{% block content %}
+<h2 class="category-title">{{ category|title }}</h2>
+
+<div class="products-grid">
+    {% for product in products %}
+        <div class="product-card">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            <h3>{{ product.name }}</h3>
+            <p>${{ product.price }}</p>
+        </div>
+    {% empty %}
+        <p>No products in this category yet.</p>
+    {% endfor %}
+</div>
+{% endblock %}

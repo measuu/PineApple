@@ -31,17 +31,15 @@
 <hr>
 
 <div class="sidebar">
-    <div class="catalog">
-        <span class="catalog-title">Catalog</span>
+    <div class="catalog-title">Catalog</div>
 
-        <div class="catalog-menu">
-            <a href="#">MacBooks</a>
-            <a href="#">iPhones</a>
-            <a href="#">iPads</a>
-            <a href="#">Apple Watch</a>
-            <a href="#">AirPods</a>
-            <a href="#">Accessories</a>
-        </div>
+    <div class="catalog-list">
+        <a href="{% url 'category_products' 'macbooks' %}">MacBooks</a>
+        <a href="{% url 'category_products' 'iphones' %}">iPhones</a>
+        <a href="{% url 'category_products' 'ipads' %}">iPads</a>
+        <a href="{% url 'category_products' 'watch' %}">Apple Watch</a>
+        <a href="{% url 'category_products' 'airpods' %}">AirPods</a>
+        <a href="{% url 'category_products' 'accessories' %}">Accessories</a>
     </div>
 </div>
 
