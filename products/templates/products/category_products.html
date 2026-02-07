@@ -1,15 +1,31 @@
-{% block content %}
-<h2 class="category-title">{{ category|title }}</h2>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ category|title }}</title>
+    <link rel="stylesheet" href="{% static 'core/home.css' %}">
+</head>
+<body>
+
+<div class="category-header">
+    <h2 class="category-title">{{ category|title }}</h2>
+    <a href="{% url 'home' %}" class="back-btn">← На главную</a>
+</div>
 
 <div class="products-grid">
     {% for product in products %}
         <div class="product-card">
-            <img src="{{ product.image.url }}" alt="{{ product.name }}">
-            <h3>{{ product.name }}</h3>
-            <p>${{ product.price }}</p>
+            <a href="{% url 'product_detail' product.id %}">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                <h3>{{ product.name }}</h3>
+                <p class="price">${{ product.price }}</p>
+            </a>
         </div>
     {% empty %}
         <p>No products in this category yet.</p>
     {% endfor %}
 </div>
-{% endblock %}
+
+</body>
+</html>
