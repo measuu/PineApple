@@ -4,26 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ category|title }}</title>
-    <link rel="stylesheet" href="{% static 'core/home.css' %}">
+    <link rel="stylesheet" href="{% static 'core/catalog.css' %}">
 </head>
 <body>
 
-<div class="category-header">
-    <h2 class="category-title">{{ category|title }}</h2>
-    <a href="{% url 'home' %}" class="back-btn">← На главную</a>
-</div>
+<a href="{% url 'home' %}" class="back-btn">← Back</a>
+
+<h1 class="category-title">{{ category|title }}</h1>
 
 <div class="products-grid">
     {% for product in products %}
-        <div class="product-card">
-            <a href="{% url 'product_detail' product.id %}">
-                <img src="{{ product.image.url }}" alt="{{ product.name }}">
-                <h3>{{ product.name }}</h3>
-                <p class="price">${{ product.price }}</p>
-            </a>
-        </div>
+        <a href="{% url 'product_detail' product.id %}" class="product-card">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            <div class="product-name">{{ product.name }}</div>
+            <div class="product-price">€{{ product.price }}</div>
+        </a>
     {% empty %}
-        <p>No products in this category yet.</p>
+        <p>No products in this category.</p>
     {% endfor %}
 </div>
 

@@ -1,13 +1,14 @@
 from django.db import models
 
-from django.db import models
 
 class Product(models.Model):
     CATEGORY_CHOICES = [
-        ('iphone', 'iPhone'),
-        ('macbook', 'MacBook'),
-        ('ipad', 'iPad'),
-        ('accessory', 'Accessories'),
+        ('macbooks', 'MacBooks'),
+        ('iphones', 'iPhones'),
+        ('ipads', 'iPads'),
+        ('watch', 'Apple Watch'),
+        ('airpods', 'AirPods'),
+        ('accessories', 'Accessories'),
     ]
 
     name = models.CharField(max_length=200)

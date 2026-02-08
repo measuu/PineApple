@@ -4,26 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ product.name }}</title>
-    <link rel="stylesheet" href="{% static 'core/product_detail.css' %}">
+    <link rel="stylesheet" href="{% static 'core/catalog.css' %}">
 </head>
 <body>
 
-<a href="{% url 'home' %}" class="back-btn">← На главную</a>
+<a href="{% url 'category_products' product.category %}" class="back-btn">
+    ← Back to Catalog
+</a>
 
-<div class="product-detail-container">
+<div class="product-detail">
 
-    <div class="product-image">
+    <div class="product-left">
         <img src="{{ product.image.url }}" alt="{{ product.name }}">
     </div>
 
-    <div class="product-info">
-        <h1>{{ product.name }}</h1>
-        <p class="price">${{ product.price }}</p>
+    <div class="product-right">
+        <h1 class="product-title">{{ product.name }}</h1>
+        <div class="detail-price">Price: €{{ product.price }}</div>
+
+        <button class="cart-btn">
+            Add to Cart
+        </button>
     </div>
+
 </div>
 
 <div class="product-description">
-    <h2>Описание</h2>
+    <strong>Description:</strong>
     <p>{{ product.description }}</p>
 </div>
 
