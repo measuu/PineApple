@@ -14,9 +14,9 @@ services:
       - redis
 
   db:
-    image: postgres:17
+    image: postgres:18
     volumes:
-      - db_data:/var/lib/postgresql/data
+      - db_data:/var/lib/postgresql
     env_file:
       - .env
 

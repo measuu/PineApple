@@ -69,7 +69,6 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
-                # добавь эту строку:
                 'django.contrib.messages.context_processors.messages',
             ],
         },
@@ -88,8 +87,8 @@ DATABASES = {
         "NAME": os.getenv("POSTGRES_DB"),
         "USER": os.getenv("POSTGRES_USER"),
         "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
-        "HOST": os.getenv("POSTGRES_HOST", "db"),
-        "PORT": os.getenv("POSTGRES_PORT", "5432"),
+        "HOST": os.getenv("POSTGRES_HOST"),
+        "PORT": os.getenv("POSTGRES_PORT"),
     }
 }
 
@@ -134,4 +133,4 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
