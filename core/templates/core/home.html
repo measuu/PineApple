@@ -1,5 +1,7 @@
 {% extends "core/base.html" %}
 
+{% block title %}PineApple{% endblock %}
+
 {% block content %}
 <div class="home-hero-wrapper">
     <div class="home-hero">
@@ -7,4 +9,21 @@
         <p>We bring the finest Apple products to your doorstep. Explore our selection and enjoy the sweet life!</p>
     </div>
 </div>
+
+{% if products %}
+    <div class="search-results">
+        {% for product in products %}
+        <div class="product-card">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            <h4>{{ product.name }}</h4>
+            <p>${{ product.price }}</p>
+            <a href="{% url 'product_detail' product.id %}">View</a>
+        </div>
+        {% endfor %}
+    </div>
+{% elif request.GET.q %}
+    <div class="search-results-message">
+        No products found for "{{ request.GET.q }}"
+    </div>
+{% endif %}
 {% endblock %}
