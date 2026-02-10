@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
+from .models import UserProfile
 
 
 class RegisterForm(UserCreationForm):
@@ -8,10 +9,14 @@ class RegisterForm(UserCreationForm):
         'class': 'form-input',
         'placeholder': 'Email'
     }))
+    phone = forms.CharField(required=False, widget=forms.TextInput(attrs={
+        'class': 'form-input',
+        'placeholder': 'Phone Number'
+    }))
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2']
+        fields = ['username', 'email', 'phone', 'password1', 'password2']
         widgets = {
             'username': forms.TextInput(attrs={'class': 'form-input', 'placeholder': 'Username'}),
         }

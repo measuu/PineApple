@@ -1,14 +1,49 @@
 {% extends 'core/base.html' %}
+{% load static %}
 
 {% block title %}My Account{% endblock %}
 
 {% block content %}
-<div class="profile-container">
+<div class="auth-container">
     <h2>My Account</h2>
 
-    <p><strong>Username:</strong> {{ user.username }}</p>
-    <p><strong>Email:</strong> {{ user.email|default:"Not provided" }}</p>
+    <div style="text-align: center; margin-bottom: 20px;">
+        {% if profile.avatar %}
+            <img src="{{ profile.avatar.url }}" alt="Avatar" class="profile-avatar">
+        {% else %}
+            <img src="{% static 'default_avatar.png' %}" alt="Avatar" class="profile-avatar">
+        {% endif %}
+    </div>
 
-    <a href="{% url 'logout' %}" class="header-btn">Logout</a>
+    <p><strong>Username:</strong> {{ request.user.username }}</p>
+    <p><strong>Email:</strong> {{ request.user.email|default:"Not provided" }}</p>
+    <p><strong>Phone:</strong> {{ profile.phone|default:"Not provided" }}</p>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{ form.phone.label_tag }}
+        {{ form.phone }}
+
+        <label for="{{ form.avatar.id_for_label }}" class="custom-file-label">Choose file</label>
+        {{ form.avatar }}
+
+        <button type="submit" class="auth-btn">Update Profile</button>
+    </form>
+
+    <a href="{% url 'logout' %}" class="auth-btn" style="margin-top: 10px;">Logout</a>
 </div>
+
+<script>
+const fileInput = document.querySelector('input[type="file"]');
+const fileLabel = document.querySelector('.custom-file-label');
+
+fileInput.addEventListener('change', function() {
+    if (fileInput.files.length > 0) {
+        fileLabel.textContent = fileInput.files[0].name;
+    } else {
+        fileLabel.textContent = 'No file chosen';
+    }
+});
+</script>
 {% endblock %}
