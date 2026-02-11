@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>{{ category|title }}</title>
     <link rel="stylesheet" href="{% static 'core/catalog.css' %}">
+    <link rel="stylesheet" href="{% static 'core/filtering.css' %}">
 </head>
 <body>
 
@@ -12,16 +13,48 @@
 
 <h1 class="category-title">{{ category|title }}</h1>
 
-<div class="products-grid">
-    {% for product in products %}
-        <a href="{% url 'product_detail' product.id %}" class="product-card">
-            <img src="{{ product.image.url }}" alt="{{ product.name }}">
-            <div class="product-name">{{ product.name }}</div>
-            <div class="product-price">€{{ product.price }}</div>
-        </a>
-    {% empty %}
-        <p>No products in this category.</p>
-    {% endfor %}
+<div class="page-wrapper">
+    <div class="filter-wrapper">
+        <form method="get">
+            <h3>Filter Products</h3>
+
+            <div class="filter-field">
+                <label for="id_min_price">Min Price (€):</label>
+                <input type="number" name="min_price" id="id_min_price" step="0.01" placeholder="0" value="{{ request.GET.min_price }}">
+            </div>
+
+            <div class="filter-field">
+                <label for="id_max_price">Max Price (€):</label>
+                <input type="number" name="max_price" id="id_max_price" step="0.01" placeholder="1000" value="{{ request.GET.max_price }}">
+            </div>
+
+            <div class="filter-field">
+                <label for="id_min_rating">Min Rating (1–5):</label>
+                <input type="number" name="min_rating" id="id_min_rating" min="1" max="5" step="1" placeholder="1" value="{{ request.GET.min_rating }}">
+            </div>
+
+            <div class="filter-field">
+                <label for="id_max_rating">Max Rating (1–5):</label>
+                <input type="number" name="max_rating" id="id_max_rating" min="1" max="5" step="1" placeholder="5" value="{{ request.GET.max_rating }}">
+            </div>
+
+            <button type="submit" class="apply-btn">Apply</button>
+        </form>
+    </div>
+
+    <div class="products-grid">
+        {% if products %}
+            {% for product in products %}
+                <a href="{% url 'product_detail' product.id %}" class="product-card">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                    <div class="product-name">{{ product.name }}</div>
+                    <div class="product-price">€{{ product.price }}</div>
+                </a>
+            {% endfor %}
+        {% else %}
+            <p>No products match your filter criteria (price or rating).</p>
+        {% endif %}
+    </div>
 </div>
 
 </body>
