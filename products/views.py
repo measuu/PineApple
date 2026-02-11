@@ -34,8 +34,8 @@ def category_view(request, category):
 
     context = {
         'category': category,
-        'filter': filtered,
+        'filtered': filtered,
         'request': request
     }
 
-    return render(request, 'catalog/category.html', context)
+    return render(request, 'products/category_products.html', context)
