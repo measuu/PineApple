@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{% static 'core/home.css' %}">
     <link rel="stylesheet" href="{% static 'core/profile.css' %}">
     <link rel="stylesheet" href="{% static 'core/search.css' %}">
+    <link rel="stylesheet" href="{% static 'core/cart.css' %}">
 </head>
 <body>
 
@@ -26,6 +27,27 @@
                 <input type="text" name="q" placeholder="Search for products..." value="{{ request.GET.q }}">
                 <button type="submit">Search</button>
             </form>
+        </div>
+
+        <div class="cart-wrapper">
+            <span class="cart-icon">🛒</span>
+            {% if cart and cart.items.count %}
+                <span class="cart-count">{{ cart.items.count }}</span>
+            {% endif %}
+
+            <div class="cart-dropdown">
+                {% if cart and cart.items.count %}
+                    <ul>
+                        {% for item in cart.items.all %}
+                            <li>{{ item.product.name }} x{{ item.quantity }} - ${{ item.total_price }}</li>
+                        {% endfor %}
+                    </ul>
+                    <p>Total: ${{ cart.total }}</p>
+                    <a href="{% url 'checkout_page' %}" class="checkout-btn">Pay</a>
+                {% else %}
+                    <p>Your cart is empty</p>
+                {% endif %}
+            </div>
         </div>
 
         {% if user.is_authenticated %}

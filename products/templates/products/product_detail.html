@@ -39,9 +39,10 @@
                 </div>
             </div>
 
-            <button class="cart-btn">
-                Add to Cart
-            </button>
+            <form method="POST" action="{% url 'add_to_cart' product.id %}">
+                {% csrf_token %}
+                <button class="cart-btn" type="submit">Add to Cart</button>
+            </form>
         </div>
 
     </div>

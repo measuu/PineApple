@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="{% static 'core/cart.css' %}">
+</head>
+<body>
+<div class="checkout-container">
+    <h2>Checkout</h2>
+
+    {% if cart.items %}
+    <div class="cart-header">
+        <span class="col-name">Product:</span>
+        <span class="col-quantity">Quantity:</span>
+        <span class="col-price">Price:</span>
+        <span class="col-action">Action:</span>
+    </div>
+
+    <ul class="cart-items">
+        {% for item in cart.items %}
+        <li class="cart-item">
+            <span class="col-name">{{ item.product.name }}</span>
+            <span class="col-quantity">{{ item.quantity }}</span>
+            <span class="col-price">€{{ item.product.price|floatformat:2 }}</span>
+          <form action="{% url 'cart_remove_item' item.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="remove-button">Remove</button>
+          </form>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <p class="total">Total: €{{ total|floatformat:2 }}</p>
+    <a href="#" class="pay-button">Pay Now</a>
+
+    {% else %}
+    <p>Your cart is empty.</p>
+    {% endif %}
+</div>
+</body>
+</html>
