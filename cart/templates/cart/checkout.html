@@ -5,9 +5,14 @@
     <meta charset="UTF-8">
     <title>Checkout</title>
     <link rel="stylesheet" href="{% static 'core/cart.css' %}">
+    <link rel="stylesheet" href="{% static 'core/back.css' %}">
 </head>
 <body>
 <div class="checkout-container">
+    <a href="{% url 'home' %}" class="back">
+        ← Back
+    </a>
+
     <h2>Checkout</h2>
 
     {% if cart.items %}
