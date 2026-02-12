@@ -37,5 +37,6 @@ The project is educational, but designed with **real-world practices** in mind: 
 
 * python-dotenv (environment variables)
 * Git & GitHub
+* Docker
 
 ---
