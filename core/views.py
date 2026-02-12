@@ -8,6 +8,6 @@ def home_view(request):
     products = Product.objects.filter(name__icontains=query) if query else None
     if products and products.count() == 1:
         product = products.first()
-        return redirect('product_detail', product.id)
+        return redirect("product_detail", product.id)
 
     return render(request, "core/home.html", {"products": products})

@@ -4,18 +4,18 @@ from django.db.models import Avg
 
 class Product(models.Model):
     CATEGORY_CHOICES = [
-        ('macbooks', 'MacBooks'),
-        ('iphones', 'iPhones'),
-        ('ipads', 'iPads'),
-        ('watch', 'Apple Watch'),
-        ('airpods', 'AirPods'),
-        ('accessories', 'Accessories'),
+        ("macbooks", "MacBooks"),
+        ("iphones", "iPhones"),
+        ("ipads", "iPads"),
+        ("watch", "Apple Watch"),
+        ("airpods", "AirPods"),
+        ("accessories", "Accessories"),
     ]
 
     name = models.CharField(max_length=255)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    image = models.ImageField(upload_to='products/')
+    image = models.ImageField(upload_to="products/")
     category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -31,9 +31,7 @@ class Product(models.Model):
 
 class Review(models.Model):
     product = models.ForeignKey(
-        Product,
-        related_name='reviews',
-        on_delete=models.CASCADE
+        Product, related_name="reviews", on_delete=models.CASCADE
     )
     rating = models.PositiveSmallIntegerField(
         choices=[(i, str(i)) for i in range(1, 6)]

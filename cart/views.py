@@ -18,12 +18,14 @@ def add_to_cart(request, product_id):
         item = CartItem.objects.create(product=product)
         cart.items.add(item)
 
-    return redirect('product_detail', product.id)
+    return redirect("product_detail", product.id)
+
 
 @login_required
 def cart_detail(request):
     cart, _ = Cart.objects.get_or_create(user=request.user)
-    return render(request, 'cart/cart.html', {'cart': cart})
+    return render(request, "cart/cart.html", {"cart": cart})
+
 
 @login_required
 def checkout(request):
@@ -31,17 +33,12 @@ def checkout(request):
     items = cart.items.all()
     total = sum([item.product.price * item.quantity for item in items])
 
-    context = {
-        'cart': {
-            'items': items
-        },
-        'total': total
-    }
-    return render(request, 'cart/checkout.html', context)
+    context = {"cart": {"items": items}, "total": total}
+    return render(request, "cart/checkout.html", context)
 
 
 def remove_item(request, item_id):
     if request.method == "POST":
         item = get_object_or_404(CartItem, id=item_id)
         item.delete()
-    return redirect('checkout_page')
+    return redirect("checkout_page")

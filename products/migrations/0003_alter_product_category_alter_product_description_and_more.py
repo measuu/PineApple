@@ -5,39 +5,68 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('products', '0002_alter_product_category_alter_product_image_and_more'),
+        ("products", "0002_alter_product_category_alter_product_image_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='product',
-            name='category',
-            field=models.CharField(choices=[('macbooks', 'MacBooks'), ('iphones', 'iPhones'), ('ipads', 'iPads'), ('watch', 'Apple Watch'), ('airpods', 'AirPods'), ('accessories', 'Accessories')], max_length=50),
+            model_name="product",
+            name="category",
+            field=models.CharField(
+                choices=[
+                    ("macbooks", "MacBooks"),
+                    ("iphones", "iPhones"),
+                    ("ipads", "iPads"),
+                    ("watch", "Apple Watch"),
+                    ("airpods", "AirPods"),
+                    ("accessories", "Accessories"),
+                ],
+                max_length=50,
+            ),
         ),
         migrations.AlterField(
-            model_name='product',
-            name='description',
+            model_name="product",
+            name="description",
             field=models.TextField(),
         ),
         migrations.AlterField(
-            model_name='product',
-            name='image',
-            field=models.ImageField(upload_to='products/'),
+            model_name="product",
+            name="image",
+            field=models.ImageField(upload_to="products/"),
         ),
         migrations.AlterModelTable(
-            name='product',
+            name="product",
             table=None,
         ),
         migrations.CreateModel(
-            name='Review',
+            name="Review",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('rating', models.PositiveSmallIntegerField(choices=[(1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5')])),
-                ('text', models.TextField()),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='reviews', to='products.product')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "rating",
+                    models.PositiveSmallIntegerField(
+                        choices=[(1, "1"), (2, "2"), (3, "3"), (4, "4"), (5, "5")]
+                    ),
+                ),
+                ("text", models.TextField()),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                (
+                    "product",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="reviews",
+                        to="products.product",
+                    ),
+                ),
             ],
         ),
     ]

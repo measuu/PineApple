@@ -11,12 +11,10 @@ The project is educational, but designed with **real-world practices** in mind: 
 * 🛒 Apple product catalog (iPhone, MacBook, iPad, accessories)
 * 🔍 Product search and filtering
 * 👤 User authentication (sign up / login)
-* ❤️ Wishlist / Favorites
 * 🧺 Shopping cart
 * 💳 Checkout & order creation
-* 📦 Order history
 * ⭐ Product reviews and ratings
-* 🛠 Admin panel for managing products and orders
+* 🛠 Admin panel for managing products
 
 ---
 
