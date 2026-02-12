@@ -28,16 +28,6 @@
                 <input type="number" name="max_price" id="id_max_price" step="0.01" placeholder="1000" value="{{ request.GET.max_price }}">
             </div>
 
-            <div class="filter-field">
-                <label for="id_min_rating">Min Rating (1–5):</label>
-                <input type="number" name="min_rating" id="id_min_rating" min="1" max="5" step="1" placeholder="1" value="{{ request.GET.min_rating }}">
-            </div>
-
-            <div class="filter-field">
-                <label for="id_max_rating">Max Rating (1–5):</label>
-                <input type="number" name="max_rating" id="id_max_rating" min="1" max="5" step="1" placeholder="5" value="{{ request.GET.max_rating }}">
-            </div>
-
             <button type="submit" class="apply-btn">Apply</button>
         </form>
     </div>
